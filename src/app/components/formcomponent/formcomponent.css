@@ -1,0 +1,115 @@
+/* FORM */
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #0b0f14;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* LABEL */
+label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8b949e;
+  font-weight: 600;
+}
+
+/* INPUT BASE */
+input,
+textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #00ff88;
+  border-left: 2px solid #00ff88;
+  color: #e6edf3;
+  padding: 10px 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* FOCUS */
+input:focus,
+textarea:focus {
+  border-bottom: 1px solid #00ff88;
+  border-left: 2px solid #00ff88;
+  box-shadow: 0 2px 0 rgba(0, 255, 136, 0.6);
+}
+
+/* PLACEHOLDER */
+input::placeholder,
+textarea::placeholder {
+  color: #555;
+}
+
+/* TEXTAREA */
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* BOTÓN */
+button {
+  margin-top: 10px;
+  background: transparent;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  padding: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* HOVER BOTÓN */
+button:hover {
+  background: rgba(0, 255, 136, 0.15);
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+/* ========================= */
+/* FILE INPUT (AJUSTADO BIEN) */
+/* ========================= */
+
+.file-upload {
+  position: relative;
+}
+
+/* INPUT FILE con mismo estilo que los demás */
+.file-upload input[type="file"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #00ff88;
+  border-left: 2px solid #00ff88;
+  color: #e6edf3;
+  padding: 10px 8px;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* botón interno */
+.file-upload input[type="file"]::file-selector-button {
+  background: transparent;
+  border: none;
+  border-right: 1px solid #00ff88;
+  color: #00ff88;
+  padding: 6px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* hover botón file */
+.file-upload input[type="file"]::file-selector-button:hover {
+  background: rgba(0, 255, 136, 0.15);
+}

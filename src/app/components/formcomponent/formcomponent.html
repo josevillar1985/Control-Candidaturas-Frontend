@@ -1,0 +1,25 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" formControlName="name">
+
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" formControlName="phone">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" formControlName="email">
+
+    <label for="asunto">Asunto:</label>
+    <input type="text" id="asunto" name="asunto" formControlName="affair">
+
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" formControlName="msg"></textarea>
+
+    <label for="cv">CV:</label>
+
+    <div class="file-upload">
+        <input type="file" id="cv" name="cv" formControlName="cv">
+    </div>
+
+    <button>Enviar</button>
+</form>

@@ -1,0 +1,54 @@
+<div class="search-container">
+  <input type="text" placeholder="Buscar empresa, email..." class="search-input" [(ngModel)]="searchText"
+    (input)="filterApplications()">
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>Email</th>
+      <th>Teléfono</th>
+      <th>Mensaje</th>
+      <th>Estado</th>
+      <th>Fecha</th>
+      <th>Cambiar Estado</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+
+
+
+  <tbody>
+    @for (item of applicationService.applications; track $index) {
+    <tr>
+      <td class="empresa">{{ item.name }}</td>
+      <td class="email">{{ item.email }}</td>
+      <td class="phone">{{ item.phone }}</td>
+      <td class="msg" [title]="item.msg">
+  {{ item.msg.length > 30 ? (item.msg | slice:0:30) + '...' : item.msg }}
+</td>
+
+      <td>
+        <span class="status-btn" [ngClass]="item.status === 'ENVIADO' ? 'enviado' : 'rechazado'">
+          {{ item.status }}
+        </span>
+      </td>
+
+      <td class="date">{{ item.date | date:'dd/MM/yyyy' }}</td>
+
+      <td class="action">
+        <button class="btn btn-green">
+          Cambiar
+        </button>
+      </td>
+
+      <td class="delete">
+        <button class="btn btn-red" (click)="deleteApplication(item.id!)">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
