@@ -20,8 +20,12 @@ export class ApplicationService {
     return this.http.get<Application[]>(this.API_URL);
   }
 
-  addApplication(application: Application) {
-    return this.http.post<Application>(this.API_URL, application);
+  addApplication(formData: FormData) {
+  return this.http.post(this.API_URL, formData);
+}
+
+  updateApplication(application: Application) {
+    return this.http.put<Application>(`${this.API_URL}/${application.id}`, application);
   }
 
   deleteApplication(id: number) {

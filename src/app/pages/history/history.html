@@ -17,8 +17,6 @@
     </tr>
   </thead>
 
-
-
   <tbody>
     @for (item of applicationService.applications; track $index) {
     <tr>
@@ -26,8 +24,8 @@
       <td class="email">{{ item.email }}</td>
       <td class="phone">{{ item.phone }}</td>
       <td class="msg" [title]="item.msg">
-  {{ item.msg.length > 30 ? (item.msg | slice:0:30) + '...' : item.msg }}
-</td>
+        {{ item.msg.length > 30 ? (item.msg | slice:0:30) + '...' : item.msg }}
+      </td>
 
       <td>
         <span class="status-btn" [ngClass]="item.status === 'ENVIADO' ? 'enviado' : 'rechazado'">
@@ -38,7 +36,7 @@
       <td class="date">{{ item.date | date:'dd/MM/yyyy' }}</td>
 
       <td class="action">
-        <button class="btn btn-green">
+        <button class="btn btn-green" (click)="updateAplication(item)">
           Cambiar
         </button>
       </td>

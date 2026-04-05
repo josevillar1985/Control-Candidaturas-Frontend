@@ -3,6 +3,7 @@ import { ApplicationService } from '../../services/application.service';
 import { CommonModule, NgClass } from '@angular/common';
 import { Application } from '../../model/application';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-history',
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class History implements OnInit {
 
-  applications: Application[] = []; // copia original
+  applications: Application[] = []; 
   searchText: string = '';
 
   constructor(
@@ -28,8 +29,8 @@ export class History implements OnInit {
   getApplications() {
     this.applicationService.getApplications().subscribe({
       next: (data) => {
-        this.applicationService.applications = data.reverse(); 
-        this.applications = [...data]; 
+        this.applicationService.applications = data.reverse();
+        this.applications = [...data];
         this.cdr.detectChanges();
       },
       error: (e) => {
@@ -38,14 +39,74 @@ export class History implements OnInit {
     })
   }
 
-  deleteApplication(id: number) {
-    this.applicationService.deleteApplication(id).subscribe({
-      next: (data) => {
-        console.log(data);
+  updateAplication(application: Application) {
+    if (application.status === 'ENVIADO') {
+      application.status = 'RECHAZADO';
+    } else if (application.status === 'RECHAZADO') {
+      application.status = 'ENVIADO';
+    }
+    this.applicationService.updateApplication(application).subscribe({
+      next: (updatedApp) => {
         this.getApplications();
+        console.log('Application updated successfully:', updatedApp);
+        Swal.fire({
+          title: 'Cambio de estado exitoso',
+          icon: 'success',
+          confirmButtonText: 'OK',
+
+          confirmButtonColor: '#193026',
+          color: '#ffffff',
+          background: '#111'
+        });
       },
       error: (e) => {
-        console.error('Error deleting application:', e);
+        console.error('Error updating application:', e);
+      }
+    })
+  }
+
+  deleteApplication(id: number) {
+
+    Swal.fire({
+      title: '¿Eliminar candidatura?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+
+      confirmButtonColor: '#ff4d4d', 
+      cancelButtonColor: '#193026',  
+      color: '#ffffff',
+      background: '#111'
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+        this.applicationService.deleteApplication(id).subscribe({
+          next: () => {
+            Swal.fire({
+              title: 'Eliminado',
+              text: 'La candidatura ha sido eliminada',
+              icon: 'success',
+              confirmButtonColor: '#193026',
+              color: '#ffffff',
+              background: '#111'
+            });
+            this.getApplications();
+          },
+          error: () => {
+            Swal.fire({
+              title: 'Error al eliminar',
+              text: 'Inténtalo de nuevo',
+              icon: 'error',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#ff4d4d',
+              color: '#ffffff',
+              background: '#111'
+            });
+          }
+        });
       }
     });
   }
@@ -56,6 +117,9 @@ export class History implements OnInit {
     const filtered = this.applications.filter(app =>
       (app.name || '').toLowerCase().includes(text) ||
       (app.email || '').toLowerCase().includes(text) ||
+      (app.msg || '').toLowerCase().includes(text) ||
+      (app.affair || '').toLowerCase().includes(text) ||
+      String(app.status || '').toLowerCase().includes(text) ||
       String(app.phone || '').toLowerCase().includes(text)
     );
 

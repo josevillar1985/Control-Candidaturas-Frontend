@@ -9,6 +9,7 @@ table {
 thead {
   background: #0f1720;
   border-bottom: 2px solid #00ff88;
+  border-top: 2px solid #00ff88;
 }
 
 th {
@@ -64,6 +65,7 @@ td:last-child:hover {
 
 tr:hover td {
   border-bottom: 1px solid #00ff88;
+  border-top: 1px solid #00ff88;
 }
 
 
@@ -102,7 +104,6 @@ tr:hover td {
   box-shadow: 0 0 8px rgba(255, 77, 77, 0.5);
 }
 
-/* BOTÓN BASE (mismo estilo que status-btn) */
 .btn {
   padding: 6px 12px;
   font-size: 0.75rem;
@@ -115,7 +116,6 @@ tr:hover td {
   transition: all 0.2s ease;
 }
 
-/* BOTÓN CAMBIAR (VERDE) */
 .btn-green {
   color: #00ff88;
   border-color: #00ff88;
@@ -126,7 +126,6 @@ tr:hover td {
   box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
 }
 
-/* BOTÓN ELIMINAR (ROJO) */
 .btn-red {
   color: #ff4d4d;
   border-color: #ff4d4d;
@@ -137,14 +136,12 @@ tr:hover td {
   box-shadow: 0 0 8px rgba(255, 77, 77, 0.5);
 }
 
-/* CONTENEDOR */
 .search-container {
   max-width: 600px;
   margin: 20px auto;
   display: flex;
 }
 
-/* INPUT */
 .search-input {
   width: 100%;
   padding: 10px 12px;
@@ -158,12 +155,10 @@ tr:hover td {
   transition: all 0.2s ease;
 }
 
-/* PLACEHOLDER */
 .search-input::placeholder {
   color: #ffffff;
 }
 
-/* FOCUS */
 .search-input:focus {
   box-shadow: 0 2px 0 rgba(0, 255, 136, 0.6);
 }
