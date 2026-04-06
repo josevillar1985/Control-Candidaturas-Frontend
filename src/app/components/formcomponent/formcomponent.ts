@@ -57,8 +57,10 @@ export class Formcomponent {
     this.applicationService.addApplication(formData).subscribe({
       next: () => {
 
-        this.http.post('http://localhost:5678/webhook-test/test', formData)
-        .subscribe();
+        this.http.post('http://localhost:5678/webhook/test', formData).subscribe({
+          next: () => console.log('Enviado a n8n con éxito'),
+          error: (err) => console.error('Error enviando a n8n', err)
+        });
         formData.forEach((value, key) => {
           console.log(key, value);
         });
