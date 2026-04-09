@@ -4,7 +4,7 @@ import { Donutscomponent } from '../../components/donutscomponent/donutscomponen
 
 @Component({
   selector: 'app-home',
-  imports: [Formcomponent, Donutscomponent],
+  imports: [Formcomponent],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
