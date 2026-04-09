@@ -11,7 +11,7 @@ export const routes: Routes = [
     path: 'dashboard',
     component: Dashboard,
     children: [
-      { path: '', redirectTo: 'history', pathMatch: 'full' },
+      { path: '', component: History },
       { path: 'history', component: History },
       { path: 'estadisticas', component: Statisticscomponent }
     ]
