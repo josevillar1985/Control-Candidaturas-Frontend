@@ -8,12 +8,12 @@ export const routes: Routes = [
   { path: '', component: Home },
 
   {
-    path: 'dashboard',
-    component: Dashboard,
-    children: [
-      { path: '', component: History },
-      { path: 'history', component: History },
-      { path: 'estadisticas', component: Statisticscomponent }
-    ]
-  }
+  path: 'dashboard',
+  component: Dashboard,
+  children: [
+    { path: '', redirectTo: 'history', pathMatch: 'full' },
+    { path: 'history', component: History },
+    { path: 'estadisticas', component: Statisticscomponent }
+  ]
+}
 ];
