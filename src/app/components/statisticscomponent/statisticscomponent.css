@@ -1,0 +1,81 @@
+.container-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 260px;
+    height: 140px;
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    border-radius: 12px;
+    border-color: #00ff88;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.card h1 {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.total p {
+    color: white;
+}
+
+.enviadas p {
+    color: #00ff88;
+}
+
+.rechazadas p {
+    color: #ff4d4d;
+}
+
+
+.donut-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+
+.donut-title {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+
+.donut-card {
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    border-color: #00ff88;
+    border-radius: 12px;
+
+    padding: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.2s;
+}
+
+
+.donut-card:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}

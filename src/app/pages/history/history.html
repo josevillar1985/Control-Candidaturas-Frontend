@@ -8,8 +8,6 @@
     <tr>
       <th>Empresa</th>
       <th>Email</th>
-      <th>Teléfono</th>
-      <th>Mensaje</th>
       <th>Estado</th>
       <th>Fecha</th>
       <th>Cambiar Estado</th>
@@ -22,10 +20,6 @@
     <tr>
       <td class="empresa">{{ item.name }}</td>
       <td class="email">{{ item.email }}</td>
-      <td class="phone">{{ item.phone }}</td>
-      <td class="msg" [title]="item.msg">
-        {{ item.msg.length > 30 ? (item.msg | slice:0:30) + '...' : item.msg }}
-      </td>
 
       <td>
         <span class="status-btn" [ngClass]="item.status === 'ENVIADO' ? 'enviado' : 'rechazado'">

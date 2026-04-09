@@ -1,16 +1,17 @@
 nav {
   background: #0b0f14;
-  border-bottom: 1px solid #161b22;
+  border-bottom: 1px solid #00ff88;
+  padding: 10px;
 }
 
-/* CONTENEDOR */
+
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 15px 20px;
 }
 
-/* LISTA */
+
 ul {
   display: flex;
   justify-content: center;
@@ -20,7 +21,7 @@ ul {
   padding: 0;
 }
 
-/* LINKS */
+
 a {
   text-decoration: none;
   color: #8b949e;
@@ -33,12 +34,12 @@ a {
   transition: all 0.2s ease;
 }
 
-/* HOVER */
+
 a:hover {
   color: #00ff88;
 }
 
-/* LÍNEA ANIMADA */
+
 a::after {
   content: '';
   position: absolute;
@@ -54,7 +55,7 @@ a:hover::after {
   width: 100%;
 }
 
-/* ACTIVO */
+
 a.active {
   color: #00ff88;
 }
