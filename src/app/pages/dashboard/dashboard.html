@@ -1,6 +1,4 @@
 <div class="layout">
-
-
   <aside class="sidebar">
     <h2>Control Candidaturas</h2>
 
@@ -8,11 +6,46 @@
       <a routerLink="/dashboard/history" routerLinkActive="active">Historial</a>
       <a routerLink="/dashboard/estadisticas" routerLinkActive="active">Estadísticas</a>
     </nav>
-  </aside>
 
+    <div class="system-status">
+      <div class="db-card">
+        <div class="status-row">
+          <span>DATABASE</span>
+          <div class="db-info">
+            <span [ngClass]="dbConnected ? 'text-green' : 'text-red'">{{ dbConnected ? 'ONLINE' : 'OFFLINE' }}</span>
+            <div class="status-circle" [ngClass]="dbConnected ? 'bg-green' : 'bg-red'"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="system-status">
+      <div class="separator"></div>
+      <p class="status-title">SYSTEM MONITOR</p>
+
+      <div class="status-row">
+        <span>HORA</span>
+        <span class="neon-text">{{ currentDate | date:'HH:mm:ss' }}</span>
+      </div>
+
+      <div class="status-row">
+        <span>FECHA</span>
+        <span>{{ currentDate | date:'dd/MM/yyyy' }}</span>
+      </div>
+
+      <div class="status-row">
+        <span>TIEMPO SESION</span>
+        <span class="neon-text">{{ formattedUptime }}</span>
+      </div>
+
+      <div class="loading-bar">
+        <div class="bar-fill"></div>
+      </div>
+    </div>
+  </aside>
 
   <main class="content">
     <router-outlet></router-outlet>
   </main>
-
 </div>
