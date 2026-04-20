@@ -2,19 +2,20 @@ import { Injectable } from '@angular/core';
 import { Application } from '../model/application';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of, catchError } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApplicationService {
-  // Esta es la línea que faltaba y causaba el error:
+  
   applications: Application[] = [];
 
-  readonly API_URL = 'http://localhost:8080/applications';
+  private readonly API_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
-  // Mantenemos el check de salud para el círculo neón
+  
   checkHealth(): Observable<boolean> {
     return this.http.get(this.API_URL).pipe(
       map(() => true),
