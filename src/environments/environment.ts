@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  apiUrl: 'https://control-candidaturas-backend.onrender.com/applications'
+  production: false,
+  apiUrl: 'http://localhost:8080/applications'
 };
