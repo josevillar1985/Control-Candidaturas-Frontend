@@ -3,6 +3,7 @@
     <h2>Control Candidaturas</h2>
 
     <nav>
+      <a routerLink="/dashboard/resumen" routerLinkActive="active">Resumen</a>
       <a routerLink="/dashboard/history" routerLinkActive="active">Historial</a>
       <a routerLink="/dashboard/estadisticas" routerLinkActive="active">Estadísticas</a>
     </nav>
@@ -12,12 +13,13 @@
         <div class="status-row">
           <span>DATABASE</span>
           <div class="db-info">
-            <span [ngClass]="dbConnected ? 'text-green' : 'text-red'">{{ dbConnected ? 'ONLINE' : 'OFFLINE' }}</span>
+            <span [ngClass]="dbConnected ? 'text-green' : 'text-red'">{{
+              dbConnected ? 'ONLINE' : 'OFFLINE'
+            }}</span>
             <div class="status-circle" [ngClass]="dbConnected ? 'bg-green' : 'bg-red'"></div>
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="system-status">
@@ -26,12 +28,12 @@
 
       <div class="status-row">
         <span>HORA</span>
-        <span class="neon-text">{{ currentDate | date:'HH:mm:ss' }}</span>
+        <span class="neon-text">{{ currentDate | date: 'HH:mm:ss' }}</span>
       </div>
 
       <div class="status-row">
         <span>FECHA</span>
-        <span>{{ currentDate | date:'dd/MM/yyyy' }}</span>
+        <span>{{ currentDate | date: 'dd/MM/yyyy' }}</span>
       </div>
 
       <div class="status-row">
@@ -49,3 +51,4 @@
     <router-outlet></router-outlet>
   </main>
 </div>
+

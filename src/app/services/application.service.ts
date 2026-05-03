@@ -24,7 +24,14 @@ export class ApplicationService {
   }
 
   getApplications() {
-    return this.http.get<Application[]>(this.API_URL);
+    return this.http.get<Application[]>(this.API_URL).pipe(
+      map((apps) =>
+        (apps || []).map((a: any) => ({
+          ...a,
+          date: a?.date ? new Date(a.date) : a?.date,
+        }))
+      )
+    );
   }
 
   addApplication(formData: FormData) {

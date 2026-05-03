@@ -1,5 +1,4 @@
 <div class="container-card">
-
   <div class="card total">
     <h1>Total</h1>
     <p>{{ total }}</p>
@@ -15,14 +14,40 @@
     <p>{{ rechazadas }}</p>
   </div>
 
-</div>
-
-<div class="donut-section">
-
-  <h1 class="donut-title">Porcentajes</h1>
-
-  <div class="donut-card">
-    <app-donutscomponent></app-donutscomponent>
+  <div class="card enviadas">
+    <h1>Enviadas (semana)</h1>
+    <p>{{ enviadasSemana }}</p>
   </div>
 
+  <div class="card total">
+    <h1>Enviadas (semana anterior)</h1>
+    <p>{{ enviadasSemanaAnterior }}</p>
+  </div>
+
+  <div class="card total">
+    <h1>Enviadas (mes)</h1>
+    <p>{{ enviadasMes }}</p>
+  </div>
+
+  <div class="card total">
+    <h1>Racha (días)</h1>
+    <p>{{ rachaDias }}</p>
+  </div>
 </div>
+
+<div class="bottom-row">
+  <div class="chart-section">
+    <h1 class="chart-title">Enviadas por semana</h1>
+    <div class="chart-card">
+      <app-weekly-sent-chart></app-weekly-sent-chart>
+    </div>
+  </div>
+
+  <div class="donut-section">
+    <h1 class="donut-title">Porcentajes</h1>
+    <div class="donut-card">
+      <app-donutscomponent></app-donutscomponent>
+    </div>
+  </div>
+</div>
+

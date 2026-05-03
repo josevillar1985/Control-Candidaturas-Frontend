@@ -1,0 +1,68 @@
+<div class="overview">
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Enviadas esta semana</div>
+      <div class="kpi-value neon">{{ thisWeekSent }}</div>
+      <div class="kpi-sub">Semana pasada: {{ lastWeekSent }}</div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-label">Enviadas este mes</div>
+      <div class="kpi-value">{{ thisMonthSent }}</div>
+      <div class="kpi-sub">Desde inicio de mes</div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-label">Tasa de rechazo</div>
+      <div class="kpi-value red">{{ rejectionRate }}%</div>
+      <div class="kpi-sub">Sobre el total histórico</div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-label">Objetivo semanal</div>
+      <div class="goal-row">
+        <input
+          class="goal-input"
+          type="number"
+          min="1"
+          [(ngModel)]="weeklyGoal"
+          (change)="saveWeeklyGoal()"
+        />
+        <span class="goal-suffix">{{ thisWeekSent }} / {{ weeklyGoal }}</span>
+      </div>
+      <div class="progress">
+        <div class="progress-fill" [style.width.%]="weeklyGoalProgressPct"></div>
+      </div>
+      <div class="kpi-sub">{{ weeklyGoalProgressPct }}% completado</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="panel-title">Candidaturas enviadas por semana</div>
+      <app-weekly-sent-chart></app-weekly-sent-chart>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Actividad reciente</div>
+      <div class="recent-list" *ngIf="recentApplications.length; else emptyRecent">
+        <div class="recent-item" *ngFor="let app of recentApplications">
+          <div class="recent-main">
+            <div class="recent-name">{{ app.name }}</div>
+            <div class="recent-meta">
+              <span class="pill" [ngClass]="app.status === 'ENVIADO' ? 'pill-green' : 'pill-red'">
+                {{ app.status }}
+              </span>
+              <span class="recent-affair">{{ app.affair }}</span>
+            </div>
+          </div>
+          <div class="recent-date">{{ app.date | date: 'dd/MM HH:mm' }}</div>
+        </div>
+      </div>
+      <ng-template #emptyRecent>
+        <div class="empty">Aún no hay candidaturas.</div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
